@@ -17,7 +17,7 @@ while getopts ":n:a:o:s" opt; do
 done
 
 if [ -z "$PROJECT_NAME" ]; then
-  echo "Usage: ./create_project.sh -n <project_name> [-a <author>] [-o <organization>] [-s]"
+  echo "Usage: ./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s]"
   exit 1
 fi
 
