@@ -43,7 +43,6 @@ myproject
 │   ├── middleware
 │   ├── models
 │   └── utils
-├── scripts
-└── vendor
+└── scripts
 ```
 note: "-s" is enable swagger "-c" is ci/cd for gitlab and github
