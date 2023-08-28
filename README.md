@@ -1,7 +1,12 @@
 # go-layout
-
+Usage: ./create_project.sh -n <project_name> [-a <author>] [-o <organization>] [-s] [-c]
+  -n: Project name
+  -a: Author name
+  -o: Organization name
+  -s: Include Swagger support
+  -c: Include CI/CD support (GitHub Actions and GitLab CI)
 ```bash
-./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s]
+./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s] [-c]
 ./CreateBackend.sh -n myproject -a myname -o myorg
 ```
 ```bash
@@ -25,4 +30,4 @@ myproject
 ├── scripts
 └── vendor
 ```
-note: -s is enable swagger
+note: -s is enable swagger -c is ci/cd for gitlab and github
