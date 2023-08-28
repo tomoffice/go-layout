@@ -1,8 +1,8 @@
 # go-layout
 
 ```bash
-./create_project.sh -n <project_name> [-a <author>] [-o <organization>] [-s]
-./create_project.sh -n myproject -a myname -o myorg
+./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s]
+./CreateBackend.sh -n myproject -a myname -o myorg
 ```
 ```bash
 myproject
@@ -25,3 +25,4 @@ myproject
 ├── scripts
 └── vendor
 ```
+note: -s is enable swagger
