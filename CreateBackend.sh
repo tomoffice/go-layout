@@ -3,21 +3,27 @@
 PROJECT_NAME=""
 AUTHOR=""
 ORGANIZATION=""
-USE_SWAGGER=0  # without swagger
+USE_SWAGGER=0  
+USE_CI=0  
 
-# getops
-while getopts ":n:a:o:s" opt; do
+while getopts ":n:a:o:sc" opt; do
   case $opt in
     n) PROJECT_NAME="$OPTARG" ;;
     a) AUTHOR="$OPTARG" ;;
     o) ORGANIZATION="$OPTARG" ;;
     s) USE_SWAGGER=1 ;;
+    c) USE_CI=1 ;;  
     \?) echo "Invalid option: -$OPTARG" >&2; exit 1 ;;
   esac
 done
 
 if [ -z "$PROJECT_NAME" ]; then
-  echo "Usage: ./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s]"
+  echo "Usage: ./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s] [-c]"
+  echo "  -n: Project name"
+  echo "  -a: Author name"
+  echo "  -o: Organization name"
+  echo "  -s: Include Swagger support"
+  echo "  -c: Include CI/CD support (GitHub Actions and GitLab CI)"
   exit 1
 fi
 
@@ -36,14 +42,17 @@ mkdir -p ${PROJECT_NAME}/scripts
 mkdir -p ${PROJECT_NAME}/configs
 mkdir -p ${PROJECT_NAME}/vendor
 
-# create enter
 touch ${PROJECT_NAME}/cmd/main.go
 echo -e "package main\n\nfunc main() {\n\t\n}" > ${PROJECT_NAME}/cmd/main.go
 
-# move dir
+if [ "$USE_CI" -eq 1 ]; then
+  touch ${PROJECT_NAME}/.gitlab-ci.yml
+  mkdir -p ${PROJECT_NAME}/.github/workflows
+  touch ${PROJECT_NAME}/.github/workflows/go.yml
+fi
+
 cd ${PROJECT_NAME}
 
-# init module
 if [ -z "$ORGANIZATION" ]; then
   if [ -z "$AUTHOR" ]; then
     go mod init ${PROJECT_NAME}
@@ -58,11 +67,9 @@ else
   fi
 fi
 
-# init go
 go mod tidy
 go work use .
 
-# install package
 go get -u github.com/gin-gonic/gin
 if [ "$USE_SWAGGER" -eq 1 ]; then
   go install github.com/swaggo/swag/cmd/swag@latest
@@ -70,7 +77,6 @@ if [ "$USE_SWAGGER" -eq 1 ]; then
   go get -u github.com/swaggo/files
 fi
 
-# git setup
 git init .
 touch .gitignore
 git add .
