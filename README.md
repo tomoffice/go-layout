@@ -1,5 +1,5 @@
 # go-layout
-Usage: ./create_project.sh -n <project_name> [-a <author>] [-o <organization>] [-s] [-c]
+Usage: ./CreateBackend.sh -n <project_name> [-a <author>] [-o <organization>] [-s] [-c]
   -n: Project name
   -a: Author name
   -o: Organization name
@@ -11,6 +11,22 @@ Usage: ./create_project.sh -n <project_name> [-a <author>] [-o <organization>] [
 ```
 ```bash
 myproject
+├── .git
+│   ├── COMMIT_EDITMSG
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── config
+│   ├── description
+│   ├── hooks
+│   ├── index
+│   ├── info
+│   ├── logs
+│   ├── objects
+│   └── refs
+├── .github
+│   └── workflows
+├── .gitignore
+├── .gitlab-ci.yml
 ├── cmd
 │   └── main.go
 ├── configs
