@@ -46,4 +46,4 @@ myproject
 ├── scripts
 └── vendor
 ```
-note: -s is enable swagger -c is ci/cd for gitlab and github
+note: "-s" is enable swagger "-c" is ci/cd for gitlab and github
