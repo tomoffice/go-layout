@@ -4,15 +4,17 @@ PROJECT_NAME=""
 AUTHOR=""
 ORGANIZATION=""
 USE_SWAGGER=0  
-USE_CI=0  
+USE_CI=0
+USE_WORK=0
 
-while getopts ":n:a:o:sc" opt; do
+while getopts ":n:a:o:scw" opt; do
   case $opt in
     n) PROJECT_NAME="$OPTARG" ;;
     a) AUTHOR="$OPTARG" ;;
     o) ORGANIZATION="$OPTARG" ;;
     s) USE_SWAGGER=1 ;;
     c) USE_CI=1 ;;  
+    w) USE_WORK=1 ;;
     \?) echo "Invalid option: -$OPTARG" >&2; exit 1 ;;
   esac
 done
@@ -24,6 +26,7 @@ if [ -z "$PROJECT_NAME" ]; then
   echo "  -o: Organization name"
   echo "  -s: Include Swagger support"
   echo "  -c: Include CI/CD support (GitHub Actions and GitLab CI)"
+  echo "  -w: If used workspace"
   exit 1
 fi
 
@@ -68,7 +71,9 @@ else
 fi
 
 go mod tidy
-go work use .
+if [ "$USE_WORK" -eq 1 ]; then
+  go work use .
+fi
 
 go get -u github.com/gin-gonic/gin
 if [ "$USE_SWAGGER" -eq 1 ]; then
