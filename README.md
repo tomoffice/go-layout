@@ -2,7 +2,7 @@
 
 ```bash
 ./create_project.sh -n <project_name> [-a <author>] [-o <organization>] [-s]
-./createApi.sh -n myproject -a myname -o myorg
+./create_project.sh -n myproject -a myname -o myorg
 ```
 ```bash
 myproject
