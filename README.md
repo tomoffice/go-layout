@@ -5,24 +5,23 @@
 ./createApi.sh -n myproject -a myname -o myorg
 ```
 ```bash
-myapi
+myproject
 ├── cmd
-│   └── myapp
-│       ├── main.go
-│       └── router
-│           ├── handler
-│           │   ├── basehandler.go
-│           │   └── eventhandler.go
-│           └── router.go
+│   └── main.go
+├── configs
 ├── go.mod
 ├── go.sum
 ├── internal
-│   ├── myapp
-│   │   └── event
-│   │       └── event.go
-│   └── pkg
-│       ├── db
-│       │   └── mysql.go
-│       └── middleware
-└── pkg
+│   ├── handlers
+│   ├── interfaces
+│   ├── middleware
+│   ├── models
+│   └── utils
+├── pkg
+│   ├── handlers
+│   ├── middleware
+│   ├── models
+│   └── utils
+├── scripts
+└── vendor
 ```
