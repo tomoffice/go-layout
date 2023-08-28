@@ -43,7 +43,6 @@ mkdir -p ${PROJECT_NAME}/pkg/middleware
 mkdir -p ${PROJECT_NAME}/pkg/utils
 mkdir -p ${PROJECT_NAME}/scripts
 mkdir -p ${PROJECT_NAME}/configs
-mkdir -p ${PROJECT_NAME}/vendor
 
 touch ${PROJECT_NAME}/cmd/main.go
 echo -e "package main\n\nfunc main() {\n\t\n}" > ${PROJECT_NAME}/cmd/main.go
